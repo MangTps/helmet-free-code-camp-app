@@ -36,6 +36,16 @@ app.use(helmet.noSniff());
 // Set X-Download-Options to prevent Internet Explorer from executing downloads
 app.use(helmet.ieNoOpen());
 
+// Set Content Security Policy
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "trusted-cdn.com"],
+    },
+  })
+);
+
 // Mount your API routes
 const api = require("./server.js");
 app.use("/_api", api);
