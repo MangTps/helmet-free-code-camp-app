@@ -41,7 +41,7 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "sni.cloudflaressl.com"],
+      scriptSrc: ["'self'", "trusted-cdn.com"],
     },
   })
 );
