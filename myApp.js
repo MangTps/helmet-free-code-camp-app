@@ -7,6 +7,7 @@ module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
 app.disable("strict-transport-security");
+app.use(helmet.frameguard({ action: "deny" }));
 app.use("/_api", api);
 app.get("/", function (request, response) {
   response.sendFile(__dirname + "/views/index.html");
